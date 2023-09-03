@@ -1,0 +1,62 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+
+
+<center>
+    <h1>Hello {{ first_name }}! Events for {{ month }} {{ year }}</h1>
+
+    As of {{ time }}
+    <br/><br/>
+    {{ cal|safe }}
+    <br/><br/>
+</center>
+    <h3>Events This Month...</h3>
+
+    {% if event_list %}
+
+        {% for event in event_list %}
+            <div class="card">
+  <div class="card-header">
+    {{ event }}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Venue: {{ event.venue }}</h5>
+    <p class="card-text">
+        <strong>Date:</strong> {{ event.event_date }}<br/>
+        <strong>Manager:</strong> {{ event.manager }}<br/>
+        {% if event.description %}
+            <strong>Description:</strong> {{ event.description }}<br/>
+        {% endif %}
+        <strong>Attendees:</strong></br>
+        {% for user in event.attendees.all %}
+            – {{ user }}<br/>
+        {% endfor %}
+    </p>
+  </div>
+  {% if user.is_authenticated %}
+      {% if user == event.manager %}
+          <div class="card-footer text-body-secondary">
+                <td align="right">
+                    <a href="{% url 'update-event' event.id %}" class="btn btn-outline-secondary brn-sm">Update Event</a>
+                </td>
+                <td align="right">
+                    <a href="{% url 'delete-event' event.id %}" class="btn btn-outline-danger brn-sm">Delete Event</a>
+                </td>
+          </div>
+      {% endif %}
+  {% endif %}
+</div>
+        <br/><br/>
+        {% endfor %}
+
+    {% else %}
+    Sorry... There are no events this month...
+    {% endif %}
+
+    <br/><br/><br/>
+    Copyright (c) {{ current_year }}
+
+    </center>
+
+{% endblock %}

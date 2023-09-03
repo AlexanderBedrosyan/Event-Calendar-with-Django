@@ -1,0 +1,13 @@
+{
+    "builds": [{
+        "src": "event_calendar/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+    }],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "event_calendar/wsgi.py"
+        }
+    ]
+}

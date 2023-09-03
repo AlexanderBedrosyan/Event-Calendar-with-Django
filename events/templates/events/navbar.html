@@ -1,0 +1,88 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Events
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'add-event' %}">Add Event</a></li>
+            <li><a class="dropdown-item" href="{% url 'list-events' %}">All Events</a></li>
+            <li><a class="dropdown-item" href="{% url 'my-events' %}">My Events</a></li>
+            <li><a class="dropdown-item" href="{% url 'search-events' %}">Search Events</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Venues
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'add-venue' %}">Add Venue</a></li>
+            <li><a class="dropdown-item" href="{% url 'list-venues' %}">All Venues</a></li>
+          </ul>
+        </li>
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Download
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'venue-text' %}">Venue Text File</a></li>
+            <li><a class="dropdown-item" href="{% url 'venue-csv' %}">Venue CSV File</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Months
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'home' current_year 'January' %}">January</a></li>
+            <li><a class="dropdown-item" href="{% url 'home' current_year 'February' %}">February</a></li>
+            <li><a class="dropdown-item" href="{% url 'home' current_year 'March' %}">March</a></li>
+            <li><a class="dropdown-item" href="{% url 'home' current_year 'April' %}">April</a></li>
+            <li><a class="dropdown-item" href="{% url 'home' current_year 'May' %}">May</a></li>
+            <li><a class="dropdown-item" href="{% url 'home' current_year 'June' %}">June</a></li>
+            <li><a class="dropdown-item" href="{% url 'home' current_year 'July' %}">July</a></li>
+            <li><a class="dropdown-item" href="{% url 'home' current_year 'August' %}">August</a></li>
+            <li><a class="dropdown-item" href="{% url 'home' current_year 'September' %}">September</a></li>
+            <li><a class="dropdown-item" href="{% url 'home' current_year 'October' %}">October</a></li>
+            <li><a class="dropdown-item" href="{% url 'home' current_year 'November' %}">November</a></li>
+            <li><a class="dropdown-item" href="{% url 'home' current_year 'December' %}">December</a></li>
+          </ul>
+        </li>
+
+        {% if user.is_superuser %}
+          <li><a class="nav-link" href="{% url 'admin-approval' %}">Admin</a></li>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register-user' %}">Register</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+        {% endif %}
+      </ul>
+      <form class="d-flex" role="search" method=POST action="{% url 'search-venues' %}">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Search Venues" aria-label="Search" name="searched">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
