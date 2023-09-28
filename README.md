@@ -15,6 +15,8 @@ The first page also has a calander of the exact month and the events which are i
 
 ![image](https://github.com/AlexanderBedrosyan/Event-Calendar-with-Django/assets/126572116/b8414aa6-0fea-4728-9788-7cf369532a28)
 
+Everyone who is logged in the system can find the events which are included in his/her profil. This can be find in "My Events". All events button shows the details.
+
 ### Venues - drop down menu:
 
 ![image](https://github.com/AlexanderBedrosyan/Event-Calendar-with-Django/assets/126572116/42330d43-47f8-42b7-be01-72622e556229)
@@ -26,3 +28,7 @@ The first page also has a calander of the exact month and the events which are i
 ### Months - drop down menu:
 
 ![image](https://github.com/AlexanderBedrosyan/Event-Calendar-with-Django/assets/126572116/ad38c404-c60d-40b3-981c-074709847ec9)
+
+### Add event page:
+
+![image](https://github.com/AlexanderBedrosyan/Event-Calendar-with-Django/assets/126572116/c8dcb9ea-27c4-4342-88d0-29699b93b9ab)
