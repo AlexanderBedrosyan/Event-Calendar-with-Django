@@ -32,3 +32,7 @@ Everyone who is logged in the system can find the events which are included in h
 ### Add event page:
 
 ![image](https://github.com/AlexanderBedrosyan/Event-Calendar-with-Django/assets/126572116/c8dcb9ea-27c4-4342-88d0-29699b93b9ab)
+
+### Admin panel:
+
+![image](https://github.com/AlexanderBedrosyan/Event-Calendar-with-Django/assets/126572116/3cd2bfe9-c064-416b-808c-193a2ccc77b9)
